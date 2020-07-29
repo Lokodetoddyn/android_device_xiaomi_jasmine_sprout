@@ -24,11 +24,21 @@
 # Inherit device configuration
 $(call inherit-product, device/xiaomi/jasmine_sprout/device.mk)
 
-# Inherit Sakura product configuration
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit IonOS product configuration
+$(call inherit-product, vendor/ion/config/common_full_phone.mk)
+
+# Booanimation
+TARGET_BOOT_ANIMATION_RES := 1080
+
+# Gapps
+TARGET_GAPPS_ARCH := arm64
 
 # Define first api level
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
+
+# IonOS Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ion.maintainer = Lokodetoddyn
 
 # Build Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
@@ -37,7 +47,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Device identifier
 PRODUCT_BRAND := xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_NAME := lineage_jasmine_sprout
+PRODUCT_NAME := ion_jasmine_sprout
 PRODUCT_DEVICE := jasmine_sprout
 PRODUCT_MODEL := Mi A2
-TARGET_BOOT_ANIMATION_RES := 1080
